@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Life in Weeks Visualizer</title>
+    <meta
+      name="description"
+      content="Visualize your life as a grid of weeks, starting from your date of birth."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <header class="page-header">
+      <h1>Life in Weeks Visualizer</h1>
+      <p>
+        Each square represents one week. Enter your date of birth to render a
+        week-by-week view of your life timeline.
+      </p>
+    </header>
+
+    <main class="page-main">
+      <section class="controls" aria-labelledby="controls-title">
+        <h2 id="controls-title" class="sr-only">Controls</h2>
+
+        <form id="dob-form" class="dob-form" novalidate>
+          <label for="dob">Date of Birth</label>
+          <input
+            id="dob"
+            name="dob"
+            type="date"
+            required
+            aria-describedby="dob-help dob-error"
+          />
+          <button type="submit">Visualize My Life</button>
+          <p id="dob-help" class="form-help">
+            Use your actual date of birth. You can change this at any time.
+          </p>
+          <p
+            id="dob-error"
+            class="form-feedback"
+            role="status"
+            aria-live="polite"
+          ></p>
+        </form>
+      </section>
+
+      <section class="visualizer" aria-labelledby="visualizer-title">
+        <h2 id="visualizer-title" class="sr-only">Visualization</h2>
+
+        <div class="summary">
+          <div class="summary-stats" aria-live="polite">
+            <div class="summary-item">
+              <span class="summary-label">Current age</span>
+              <span id="stat-age" class="summary-value">–</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Weeks lived</span>
+              <span id="stat-lived" class="summary-value">–</span>
+            </div>
+            <div class="summary-item">
+              <span class="summary-label">Weeks remaining</span>
+              <span id="stat-remaining" class="summary-value">–</span>
+            </div>
+          </div>
+
+          <div class="legend" aria-hidden="true">
+            <span class="legend-item">
+              <span class="legend-swatch legend-swatch--past"></span>
+              <span class="legend-label">Filled square = Weeks lived</span>
+            </span>
+            <span class="legend-item">
+              <span class="legend-swatch legend-swatch--future"></span>
+              <span class="legend-label">Outlined square = Weeks remaining</span>
+            </span>
+          </div>
+
+          <div class="reflection-toggle">
+            <label class="reflection-toggle-label">
+              <input
+                id="reflection-toggle"
+                type="checkbox"
+                class="reflection-switch"
+                checked
+              />
+              <span class="reflection-switch-slider"></span>
+              <span class="reflection-toggle-text">Show reflection</span>
+            </label>
+            <p id="reflection-text" class="reflection-text">
+              Each square represents one week of your life.
+            </p>
+          </div>
+        </div>
+
+        <div
+          id="weeks-grid"
+          class="weeks-grid"
+          aria-live="polite"
+          aria-label="Weeks grid"
+        ></div>
+      </section>
+    </main>
+
+    <footer class="page-footer">
+      <small>
+        <span id="copyright-year"></span> Pavan Deshpande
+      </small>
+    </footer>
+  </body>
+</html>
